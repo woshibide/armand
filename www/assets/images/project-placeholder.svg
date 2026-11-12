@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" preserveAspectRatio="none" fill="none">
+  <path fill="#000000" d="M0 0h1600v1000H0z"/>
+  <g stroke="#444444" stroke-width="1" vector-effect="non-scaling-stroke">
+    <path vector-effect="non-scaling-stroke" d="M.5.5h1599v999H.5zM0 0l1600 1000M1600 0 0 1000"/>
+  </g>
+</svg>

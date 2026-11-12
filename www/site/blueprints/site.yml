@@ -1,0 +1,23 @@
+title: Portfolio
+tabs:
+  content:
+    label: Content
+    sections:
+      pages:
+        type: pages
+        templates:
+          - home
+          - about
+        create: false
+      instructions:
+        type: info
+        label: Publishing
+        text: Edit projects inside Home. Save and publish your changes, then commit the content and uploaded files to Git to update GitHub Pages.
+  settings:
+    label: Settings
+    fields:
+      description: fields/description
+      email:
+        label: Contact email
+        type: email
+        help: Optional. Shown in the footer when filled in.

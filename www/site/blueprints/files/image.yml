@@ -1,0 +1,13 @@
+title: Image
+accept:
+  extension: jpg, jpeg, png, webp, avif, gif
+fields:
+  alt:
+    label: Alternative text
+    type: text
+    required: true
+    help: Describe the image for people who cannot see it.
+  caption:
+    label: Caption
+    type: textarea
+    buttons: false

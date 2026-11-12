@@ -1,0 +1,21 @@
+Title: Project two
+
+----
+
+Summary: Placeholder project. Add a project title, introduction and images here.
+
+----
+
+Text:
+
+This is a placeholder for Armand's second project.
+
+Replace this text with the project's context, your contribution and the finished work.
+
+----
+
+Description: Placeholder for Armand Demulder's second portfolio project.
+
+----
+
+Uuid: mvedckngvew139x1

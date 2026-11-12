@@ -1,0 +1,7 @@
+title: About
+extends: pages/default
+options:
+  delete: false
+  changeSlug: false
+  changeStatus: false
+  changeTemplate: false

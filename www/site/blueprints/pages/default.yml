@@ -1,0 +1,24 @@
+title: Text page
+
+columns:
+  main:
+    width: 2/3
+    sections:
+      fields:
+        type: fields
+        fields:
+          text:
+            type: textarea
+            label: Text
+            size: large
+            uploads: image
+  sidebar:
+    width: 1/3
+    sections:
+      meta:
+        type: fields
+        fields:
+          description: fields/description
+      files:
+        type: files
+        uploads: image

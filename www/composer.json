@@ -1,0 +1,27 @@
+{
+  "name": "armand-demulder/portfolio",
+  "description": "Armand Demulder's personal portfolio, built with Kirby and exported to GitHub Pages.",
+  "license": "proprietary",
+  "type": "project",
+  "require": {
+    "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+    "getkirby/cms": "~5.6.3"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    },
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    },
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "build": "@php scripts/build.php",
+    "check": "@php scripts/check.php",
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php -S localhost:8000 kirby/router.php"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+label: Search description
+type: textarea
+buttons: false
+maxlength: 160
+help: A short description for search engines and link previews.

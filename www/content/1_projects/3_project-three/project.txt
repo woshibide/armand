@@ -1,0 +1,21 @@
+Title: Project three
+
+----
+
+Summary: Placeholder project. Add a project title, introduction and images here.
+
+----
+
+Text:
+
+This is a placeholder for Armand's third project.
+
+Replace this text with the project's context, your contribution and the finished work.
+
+----
+
+Description: Placeholder for Armand Demulder's third portfolio project.
+
+----
+
+Uuid: fdnoodxtnjy9kipt
