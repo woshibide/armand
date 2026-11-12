@@ -1,6 +1,6 @@
 # Armand Demulder portfolio
 
-Personal portfolio built with Kirby 5 and exported to static HTML for GitHub Pages.
+Personal portfolio built with Kirby 5, hosted live on fortrabbit with a separate static design preview on GitHub Pages.
 Design direction: Studio Dumbar's black canvas, fixed edge-aligned navigation and restrained regular typography.
 The homepage uses CSS snapping with an infinite native-scroll range and recycled project groups, with crossed SVG placeholders until real artwork is supplied.
 Read [the design study](../STUDIO-DUMBAR-DESIGN-STUDY.md) before changing the layout or interaction.
@@ -44,6 +44,7 @@ Only About appears in main navigation; Armand's name links home.
 
 - `content/`: versioned page text, image originals and file metadata.
 - `site/blueprints/`: Panel schema; image uploads use `files/image` with required alternative text.
+- `site/blueprints/users/editor.yml`: content editing and own-account access, without user administration or system settings.
 - `site/controllers/`: project collections and sibling navigation.
 - `site/templates/`: thin page views.
 - `site/snippets/layout.php`: shared document, navigation and footer.
@@ -104,7 +105,8 @@ The production build receives `SITE_UPDATED_AT` from the current Git commit time
 Do not hardcode the footer date.
 
 GitHub Pages runs no PHP, Panel, API, forms or background thumbnail jobs.
-Edit through local Kirby, publish changes, then commit `content/`, uploaded originals and metadata to trigger a rebuild.
+Edit preview content through local Kirby, then commit `content/`, uploaded originals and metadata to rebuild the design preview.
+Armand edits live content through the fortrabbit Panel, independently of GitHub Pages.
 Draft pages and unsaved changes are not published.
 Unlisted pages are public Kirby pages and are exported.
 Panel accounts, sessions, caches and source code never belong in the static artifact.
@@ -120,8 +122,16 @@ The GitHub remote is `https://github.com/woshibide/armand.git`, with `main` as t
 The fortrabbit app is `ap-f1z2vx`, with environment `en-j3yorp` in `eu-w1a` and main domain `https://armand.frbit.cloud`.
 It deploys `www/` from `main`, running Composer from the checkout root with `cd www && composer install --no-dev --prefer-dist --no-interaction --no-ansi --no-progress`.
 The Kirby deployment template preserves content, media, Panel accounts and sessions.
-Content stays versioned for Pages, but reaches fortrabbit through a separate reviewed rsync upload.
+Remote Panel content is authoritative for the live site; repository content supplies the independent Pages design preview.
+No automatic content sync between fortrabbit and Pages is required.
+Review remote content before any later rsync upload; local preview files must not overwrite Armand's live edits.
 Do not overwrite remote Panel accounts or sessions with local files.
+Armand is the sole production Panel editor; no developer Panel account is needed.
+The local test editor is separate and must never reach production.
+Use native password login; no SMTP or email service is configured.
+Initial passwords remain valid until changed through Account > Change password; they are not one-use codes.
+Password recovery requires SSH until an email service is configured.
+Never record account passwords in source, documentation, commits or test fixtures.
 Runtime PHP is 8.5, database and jobs are disabled, and autoscaling is disabled.
 The app starts as an unbilled trial through 19 November 2026, with no payment method attached.
 Build scripts must reject HTTP execution, and Apache must block direct access to dependencies, scripts, tests, generated previews and tooling manifests.

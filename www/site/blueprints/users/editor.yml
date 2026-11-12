@@ -1,0 +1,23 @@
+title: Editor
+
+sections:
+  account:
+    type: info
+    label: Your account
+    text: Use Settings above to change your password. Open Portfolio to edit projects and About.
+
+permissions:
+  access:
+    languages: false
+    system: false
+    users: false
+  files:
+    changeTemplate: false
+  languages: false
+  pages:
+    changeTemplate: false
+    move: false
+  users: false
+  user:
+    changeRole: false
+    delete: false

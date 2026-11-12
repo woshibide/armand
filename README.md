@@ -1,6 +1,7 @@
 # Armand Demulder
 
-Personal portfolio built with Kirby 5 and exported to GitHub Pages.
+Personal portfolio built with Kirby 5, with the live editing site hosted on fortrabbit.
+GitHub Pages hosts a separate static design preview.
 Website source lives in [`www/`](www/README.md).
 
 ```sh

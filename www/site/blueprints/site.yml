@@ -12,7 +12,7 @@ tabs:
       instructions:
         type: info
         label: Publishing
-        text: Edit projects inside Home. Save and publish your changes, then commit the content and uploaded files to Git to update GitHub Pages.
+        text: Edit projects inside Home. Save and publish your changes to update this website.
   settings:
     label: Settings
     fields:

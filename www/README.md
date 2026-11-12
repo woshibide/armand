@@ -1,6 +1,7 @@
 # Armand Demulder
 
-Personal portfolio powered by Kirby 5, published as a static website on GitHub Pages.
+Personal portfolio powered by Kirby 5, with the live website and content editing hosted on fortrabbit.
+GitHub Pages hosts a separate static design preview and does not need to mirror live content edits.
 The homepage loops through three full-screen placeholder projects, using CSS scroll snapping and crossed SVG artwork.
 Studio Dumbar's layout informs the black canvas, fixed navigation and typography, using locally hosted Inter Tight Regular.
 About and project pages share the same visual system and a dated footer; home has no footer.
@@ -20,7 +21,7 @@ composer start
 ```
 
 Open [localhost:8000](http://localhost:8000).
-Use [localhost:8000/panel](http://localhost:8000/panel) to create your local account and edit content.
+Use [localhost:8000/panel](http://localhost:8000/panel) to log in to your local account and edit content.
 Accounts stay local and are ignored by Git.
 Stop the development server with Ctrl+C.
 
@@ -85,7 +86,7 @@ The deployment URL comes from GitHub, supporting both repository subpaths and co
 Pull requests build and check without deploying.
 Only `main` can deploy.
 
-To publish edits, save and publish them in the local Panel, then commit and push `content/`, including uploaded image originals and their metadata files.
+To update the design preview, publish local sample content and push `content/`, including uploaded image originals and their metadata files.
 GitHub Pages cannot host Kirby's Panel.
 The repository remote is `https://github.com/woshibide/armand.git`.
 
@@ -116,9 +117,26 @@ rsync -avzn --exclude='.DS_Store' ./content/ en-j3yorp@ssh.eu-w1a.frbit.app:./co
 rsync -avz --exclude='.DS_Store' ./content/ en-j3yorp@ssh.eu-w1a.frbit.app:./content/
 ```
 
-Keep published content in Git too, so GitHub Pages builds the same projects.
+The remote Panel is the source of live content, and published edits appear directly on fortrabbit.
+Repository content supplies the GitHub Pages design preview; no automatic content sync is required between the two.
+Review remote content before any later rsync upload so local preview files do not overwrite Armand's edits.
 Production debug and Panel installation are disabled.
 Build and check scripts accept CLI execution only, and Apache blocks direct access to build tools, dependencies and generated previews.
+
+### Panel accounts
+
+Armand has a production editor account at [armand.frbit.cloud/panel](https://armand.frbit.cloud/panel).
+The local test account is separate and is never deployed.
+The editor role permits project and image management, About edits, site settings and changes to the user's own password.
+User administration, system settings, role changes, template changes and moving pages between parents are disabled.
+Accounts are created through Kirby's PHP API over CLI or SSH; the public installer stays disabled.
+Maintenance does not require a second production Panel account.
+
+Login uses email and password only, with no SMTP or email service configured.
+An initial password remains valid until the account owner changes it through Account > Change password.
+It is not a one-use code and does not expire automatically.
+Lost-password recovery currently requires a reset over SSH.
+Keep account files, credentials and sessions outside Git, and never copy local test accounts to production.
 
 ## Browser checks
 
