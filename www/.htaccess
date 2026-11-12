@@ -35,6 +35,10 @@ RewriteRule ^site/(.*) index.php [L]
 # block direct access to Kirby and the Panel sources
 RewriteRule ^kirby/(.*) index.php [L]
 
+# keep dependencies, build tools and generated previews private
+RewriteRule ^(vendor|scripts|tests|dist)(/|$) index.php [L]
+RewriteRule ^(composer\.(json|lock)|package(-lock)?\.json|playwright\.config\.js|AGENTS\.md|CLAUDE\.md|PLUGINS\.md|README\.md)$ index.php [L]
+
 # make site links work
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -93,6 +93,33 @@ The footer date uses the current Git commit timestamp during deployment, formatt
 Local rendering falls back to published content and asset modification times.
 Set `SITE_UPDATED_AT` to an ISO timestamp when building outside the workflow if a fixed release date is needed.
 
+## fortrabbit
+
+The Kirby app is [armand](https://dash.fortrabbit.com/environments/en-j3yorp), environment `en-j3yorp` in Ireland (`eu-w1a`).
+Its main domain is [armand.frbit.cloud](https://armand.frbit.cloud).
+The environment uses PHP 8.5, Kirby 5 and XS PHP, storage, traffic and backups, with database and jobs disabled.
+Autoscaling is disabled.
+The app was created as an unbilled trial ending 19 November 2026, with no payment method attached.
+The verified price after the trial is EUR 2.50 per month; continuation requires adding a payment method in the dashboard.
+
+Pushes to `main` deploy code from `www/`.
+The build runs `cd www && composer install --no-dev --prefer-dist --no-interaction --no-ansi --no-progress` from the checkout root.
+The deployed directory becomes the web root, and `rm -rf site/cache/*/pages` runs afterward.
+Deployment settings stay in the fortrabbit dashboard.
+
+Kirby's deployment template preserves `content/`, `media/`, `site/accounts/` and `site/sessions/`.
+The initial placeholder content is copied separately because Git deployments exclude it.
+To publish later content changes, first review a dry run from this `www/` directory:
+
+```sh
+rsync -avzn --exclude='.DS_Store' ./content/ en-j3yorp@ssh.eu-w1a.frbit.app:./content/
+rsync -avz --exclude='.DS_Store' ./content/ en-j3yorp@ssh.eu-w1a.frbit.app:./content/
+```
+
+Keep published content in Git too, so GitHub Pages builds the same projects.
+Production debug and Panel installation are disabled.
+Build and check scripts accept CLI execution only, and Apache blocks direct access to build tools, dependencies and generated previews.
+
 ## Browser checks
 
 ```sh

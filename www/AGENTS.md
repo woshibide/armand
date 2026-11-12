@@ -117,6 +117,15 @@ Localhost configuration enables both only for the PHP development server.
 Keep that server local; it is not a production web server.
 The GitHub remote is `https://github.com/woshibide/armand.git`, with `main` as the publishing branch.
 
+The fortrabbit app is `ap-f1z2vx`, with environment `en-j3yorp` in `eu-w1a` and main domain `https://armand.frbit.cloud`.
+It deploys `www/` from `main`, running Composer from the checkout root with `cd www && composer install --no-dev --prefer-dist --no-interaction --no-ansi --no-progress`.
+The Kirby deployment template preserves content, media, Panel accounts and sessions.
+Content stays versioned for Pages, but reaches fortrabbit through a separate reviewed rsync upload.
+Do not overwrite remote Panel accounts or sessions with local files.
+Runtime PHP is 8.5, database and jobs are disabled, and autoscaling is disabled.
+The app starts as an unbilled trial through 19 November 2026, with no payment method attached.
+Build scripts must reject HTTP execution, and Apache must block direct access to dependencies, scripts, tests, generated previews and tooling manifests.
+
 ## Plugins and agent tooling
 
 See [PLUGINS.md](PLUGINS.md) for dependency decisions and interactions.

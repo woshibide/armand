@@ -190,4 +190,6 @@ Real Kirby zero/one-project variants were rendered and checked in a mobile brows
 The adjusted Home blueprint and exact About copy were verified through the local Panel UI and authenticated API.
 A real static browser check under `/portfolio/` verified navigation, the local font, SVG delivery and conversion of a 23:30 UTC update timestamp to the next day in Amsterdam.
 Composer build, artifact checks and configuration validation passed.
-GitHub-hosted workflow execution still requires the repository to be connected and Pages to be enabled.
+The project is pushed to [woshibide/armand](https://github.com/woshibide/armand), with website source in `www/` and the workflow at the repository root.
+GitHub Pages must use the GitHub Actions publishing source.
+The Kirby runtime also has a fortrabbit app at [armand.frbit.cloud](https://armand.frbit.cloud); hosting and content-sync details live in `www/README.md`.
