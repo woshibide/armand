@@ -1,3 +1,4 @@
+<?php $stylesheetVersion = hash_file('sha256', $kirby->root('assets') . '/css/main.css') ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
   <link rel="canonical" href="<?= esc($page->url(), 'attr') ?>">
   <?php endif ?>
   <link rel="preload" href="<?= esc(url('assets/fonts/inter-tight-regular.woff2'), 'attr') ?>" as="font" type="font/woff2" crossorigin>
-  <?= css('assets/css/main.css') ?>
+  <?= css('assets/css/main.css?v=' . $stylesheetVersion) ?>
   <?= js('assets/js/main.js', ['type' => 'module']) ?>
 </head>
 <body class="<?= $page->isHomePage() ? 'is-home' : 'is-page' ?>">

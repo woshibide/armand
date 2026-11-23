@@ -59,6 +59,8 @@ $home->loadHTML($documents['index.html']);
 $baseUrl = (new DOMXPath($home))->evaluate('string(//link[@rel="canonical"]/@href)');
 $baseParts = parse_url($baseUrl);
 $basePath = rtrim($baseParts['path'] ?? '', '/');
+$stylesheet = $destination . '/assets/css/main.css';
+$stylesheetVersion = is_file($stylesheet) ? hash_file('sha256', $stylesheet) : false;
 
 if (!$baseUrl) {
   $errors[] = 'Home page is missing its canonical URL.';
@@ -68,6 +70,10 @@ foreach ($documents as $relative => $html) {
   $document = new DOMDocument();
   $document->loadHTML($html);
   $xpath = new DOMXPath($document);
+  $stylesheetUrl = $xpath->evaluate('string(//link[@rel="stylesheet"]/@href)');
+  if ($stylesheetVersion === false || $stylesheetUrl !== rtrim($baseUrl, '/') . '/assets/css/main.css?v=' . $stylesheetVersion) {
+    $errors[] = $relative . ': stylesheet URL must include the exported CSS hash.';
+  }
   foreach (['//html[@lang]', '//title', '//main[@id="main"]', '//h1', '//a[@href="#main"]'] as $query) {
     if ($xpath->query($query)->length !== 1) {
       $errors[] = $relative . ': expected exactly one ' . $query;
