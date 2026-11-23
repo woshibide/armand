@@ -136,6 +136,7 @@ figure {
 .site-name {
   justify-self: start;
   align-self: start;
+  font-size: clamp(20px, 1rem + 4vw, 5rem);
 }
 
 .site-header a {
@@ -287,7 +288,7 @@ html:has(body.is-home) {
   text-wrap: balance;
 }
 
-.about-statement p + p {
+.about-statement p+p {
   margin-top: 1em;
 }
 
@@ -331,8 +332,8 @@ html:has(body.is-home) {
   margin-block: var(--space-section);
 }
 
-.project-story p + p,
-.text-page p + p {
+.project-story p+p,
+.text-page p+p {
   margin-top: 1.2em;
 }
 
@@ -378,7 +379,7 @@ html:has(body.is-home) {
   padding: 40px calc(var(--space-edge) + env(safe-area-inset-right)) calc(var(--space-header) + env(safe-area-inset-bottom)) calc(var(--space-edge) + env(safe-area-inset-left));
 }
 
-.site-footer p + p {
+.site-footer p+p {
   margin-top: 1em;
 }
 
@@ -417,6 +418,7 @@ html:has(body.is-home) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
